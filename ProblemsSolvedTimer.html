@@ -9,7 +9,7 @@
     <div style="text-align: center">
         <p id="time-text" style="font-size:40px">00:00:00:00</p>
         <p style="font-size:80px">Problems Solved:</p>
-        <p id="problems"style="font-size:50px">0/10</p>
+        <p id="problems" style="font-size:50px">0/10</p>
     </div>
     <div style="text-align: center">
         <button type="button" onclick="start()" style="font-size:100px">Start</button>
@@ -24,15 +24,15 @@
 </body>
 
 <script>
-    var problemsSum = 10;
-    var problemsSolved = 0;
-    var num = 0;
+    const problemsSum = 10;
+    let problemsSolved = 0;
+    let num = 0;
     function problemAdd() {
         problemsSolved = problemsSolved + 1
         document.getElementById("problems").innerText=problemsSolved + "/" + problemsSum;
-        var str = problemsSolved + ". " + hours+":"+minutes+":"+seconds+":"+milliseconds/10;
+        const str = problemsSolved + ". " + hours+":"+minutes+":"+seconds+":"+milliseconds/10;
         num = num + 1;
-        document.getElementById("problemsList").innerHTML += "<li "+ "id=\"" + "gen_" + num + "\"" + "style='font-size:20px'>"+ str +"</li>";
+        document.getElementById("problemsList").innerHTML += "<li "+ "id=\"" + "gen_" + num + "\"" + " style='font-size:20px'>"+ str +"</li>";
     }
     function problemSub() {
         problemsSolved = problemsSolved - 1
@@ -41,9 +41,9 @@
         num = num - 1;
     }
 
-    var hours, minutes, seconds;
+    let hours, minutes, seconds;
     hours = minutes = seconds = 0;
-    var milliseconds = 0;
+    let milliseconds = 0;
     function start() {
         setInterval(timer, 50);
     }
