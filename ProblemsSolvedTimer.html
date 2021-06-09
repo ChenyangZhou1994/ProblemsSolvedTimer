@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ProblemsSolvedTimer</title>
+</head>
+
+<body>
+    <div style="text-align: center">
+        <p id="time-text" style="font-size:40px">00:00:00:00</p>
+        <p style="font-size:80px">Problems Solved:</p>
+        <p id="problems"style="font-size:50px">0/10</p>
+    </div>
+    <div style="text-align: center">
+        <button type="button" onclick="start()" style="font-size:100px">Start</button>
+        <button type="button" onclick="problemAdd()" style="font-size:100px">Problem + 1</button>
+        <button type="button" onclick="problemSub()" style="font-size:100px">Problem - 1</button>
+    </div>
+    <div>
+        <P style="font-size:40px">Solved Time</p>
+        <ul id="problemsList">
+        </ul>
+    </div>
+</body>
+
+<script>
+    var problemsSum = 10;
+    var problemsSolved = 0;
+    var num = 0;
+    function problemAdd() {
+        problemsSolved = problemsSolved + 1
+        document.getElementById("problems").innerText=problemsSolved + "/" + problemsSum;
+        var str = problemsSolved + ". " + hours+":"+minutes+":"+seconds+":"+milliseconds/10;
+        num = num + 1;
+        document.getElementById("problemsList").innerHTML += "<li "+ "id=\"" + "gen_" + num + "\"" + "style='font-size:20px'>"+ str +"</li>";
+    }
+    function problemSub() {
+        problemsSolved = problemsSolved - 1
+        document.getElementById("problems").innerText=problemsSolved + "/" + problemsSum;
+        document.getElementById("gen_" + num).remove();
+        num = num - 1;
+    }
+
+    var hours, minutes, seconds;
+    hours = minutes = seconds = 0;
+    var milliseconds = 0;
+    function start() {
+        setInterval(timer, 50);
+    }
+    function timer() {
+        milliseconds = milliseconds + 50;
+        if (milliseconds >= 1000) {
+            milliseconds = 0;
+            seconds = seconds + 1
+        }
+        if (seconds >= 60) {
+            seconds = 0;
+            minutes = minutes + 1
+        }
+        if (minutes >= 60) {
+            minutes = 0;
+            hours = hours + 1
+        }
+        document.getElementById("time-text").innerText=hours+":"+minutes+":"+seconds+":"+milliseconds/10;
+    }
+</script>
+</html>
